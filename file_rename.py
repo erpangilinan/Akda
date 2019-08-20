@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 #Command line interface setup
 import argparse
 parser = argparse.ArgumentParser(description='Copies the file with a different name.')
