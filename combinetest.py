@@ -5,6 +5,25 @@ parser = argparse.ArgumentParser(description='Summarizes several QUAST html file
 parser.add_argument('infile', nargs='+', help='the names of the input quast html files')
 args = parser.parse_args()
 
+class Result(): #Result Block
+	"""Each Result will have the following attributes:
+		Name, Num_contigs, Total_length, Largest_contig, N50, GC_Content"""
+		
+	Coalition = [] #Repository of all Result objects
+		
+	def __init__(self, Name, Num_contigs, Total_length, Largest_contig, N50):
+		#Primary Stats
+		self.Name = Name
+		self.Num_contigs = Num_contigs
+		self.Total_length = Total_length
+		self.Largest_contig = Largest_contig
+		self.N50 = N50
+		
+		Result.Coalition.append(self)
+		
+	def __str__(self):
+		return self.Name
+
 for filename in args.infile:
 	#Get contents of infile
 	file_stream = open(filename, "r", encoding="utf8")
@@ -31,5 +50,15 @@ for filename in args.infile:
 	N50 = contents[(N50_enddigit-100):N50_enddigit]
 	N50_startdigit = N50.rfind("{\"values\":[")
 	N50 = N50[N50_startdigit+11:]
+	
+	data = Result(filename[:-5], Num_contigs, Total_length, Largest_contig, N50)
 
-	print(filename[:-5], Num_contigs, Total_length, Largest_contig, N50)
+finalout = ""
+
+for data in Result.Coalition:
+	finalout = finalout+data.Name+"\t"+data.Num_contigs+"\t"+data.Total_length+"\t"+data.Largest_contig+"\t"+data.N50+"\n"
+
+#Create the new outfile
+file_stream = open("result.txt", "w+", encoding="utf8")
+file_stream.write(finalout)
+file_stream.close()
