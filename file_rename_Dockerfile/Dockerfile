@@ -11,6 +11,6 @@ RUN	cd /tmp \
 &&	rm -rf /tmp/* \
 &&	rm -rf /var/lib/apt/list/*
 
-LABEL	tool=filerename version=0.0.1
+LABEL	tool=filerename version=0.0.3
 
 WORKDIR /data
