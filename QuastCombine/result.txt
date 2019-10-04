@@ -1,0 +1,6 @@
+Name           test_abyss    test_spades    test_velvet    
+Num_contigs    96            21             726            
+Total_length   1033095       1041396        622641         
+Largest_contig 51728         264973         3149           
+N50            18021         173798         881            
+L50            16            3              246            
