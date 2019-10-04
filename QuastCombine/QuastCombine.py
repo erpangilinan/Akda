@@ -484,6 +484,8 @@ def CreateGraph(Graphcontents):
 def CombineGraph(datatype, plotlabels):
 	"""Creates a collated graph using Matplotlib given the class attribute of a list of lists X & Y"""
 	#Create the combine graph png
+	import matplotlib
+	matplotlib.use('Agg')
 	from matplotlib import pyplot as plt
 	
 	#Plot data
