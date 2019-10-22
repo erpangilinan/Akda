@@ -3,8 +3,8 @@ FROM	ubuntu
 RUN	cd /tmp \
 &&	apt-get update \
 &&	apt-get install -y wget python3\
-&&	wget https://raw.githubusercontent.com/erpangilinan/file-rename/master/file_rename.py \
-&&	chmod +x file_rename.py \
+&&	wget https://raw.githubusercontent.com/erpangilinan/Akda/master/FileRename/file_rename_V1.py \
+&&	chmod +x file_rename_V1.py \
 &&	cp -r * /usr/local/bin \
 &&	cd / \
 &&	apt autoremove -y wget \
